@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login/Signup Form -->
+    <div id="auth-container" class="container mt-5">
+        <h2 class="text-center mb-4">Imagica Notes</h2>
+        <div id="auth-form">
+            <!-- Auth form content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Main App Container (hidden by default) -->
+    <div id="app-container" class="container mt-5 d-none">
+        <!-- Settings Menu -->
+        <div class="dropdown mb-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Settings
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                <li><a class="dropdown-item" href="#" id="logout-btn">Logout</a></li>
+<!--                 <li><a class="dropdown-item" href="#" id="update-username-btn">Update Username</a></li> -->
+<!--                 <li><a class="dropdown-item" href="#" id="add-description-btn">Add Profile Description</a></li> -->
+                <li><a class="dropdown-item" href="#" id="delete-account-btn">Delete Account</a></li>
+            </ul>
+        </div>
+
+        <!-- Create Note Button -->
+        <button id="create-note-btn" class="btn btn-primary mb-3">Create New Note</button>
+
+        <!-- Notes List -->
+        <div id="notes-list" class="row">
+            <!-- Notes will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Create Note Modal -->
+    <div class="modal fade" id="createNoteModal" tabindex="-1" aria-labelledby="createNoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createNoteModalLabel">Create New Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="create-note-form">
+                        <div class="mb-3">
+                            <label for="note-name" class="form-label">Note Name</label>
+                            <input type="text" class="form-control" id="note-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="note-content" class="form-label">Content must be in (1-200 words)</label>
+                            <textarea class="form-control" id="note-content" rows="5" required minlength="1" maxlength="200"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="note-file" class="form-label">Attach Image or Video</label>
+                            <input type="file" class="form-control" id="note-file" accept="image/*,video/*">
+                        </div>
+                        <div class="progress mb-3 d-none" id="upload-progress-container">
+                            <div class="progress-bar" role="progressbar" id="upload-progress-bar"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Note</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
